@@ -22,6 +22,7 @@ use App\Http\Controllers\Admin\VisaAdminController;
 use App\Http\Controllers\Admin\ClientAdminController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/clear-cache', function() {
     Artisan::call('config:clear');
@@ -63,9 +64,9 @@ Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsle
 
 // Admin protected routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.dashboard');
-    })->name('admin.dashboard');
+    
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+
     Route::get('/newsletter', [NewsletterController::class, 'index'])->name('admin.newsletter.index');
 
     Route::resource('banks', BankController::class)->names('admin.banks');
