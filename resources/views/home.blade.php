@@ -69,20 +69,20 @@
                                 <div class="price-input">
                                     <div class="field">
                                         <span>Min</span>
-                                        <input type="number" name="min_price" class="input-min" value="250000">
+                                        <input type="number" name="min_price" class="input-min" value="1250000">
                                     </div>
                                     <div class="separator">-</div>
                                     <div class="field">
                                         <span>Max</span>
-                                        <input type="number" name="max_price" class="input-max" value="750000">
+                                        <input type="number" name="max_price" class="input-max" value="3750000">
                                     </div>
                                 </div>
                                 <div class="slider">
                                     <div class="progress"></div>
                                 </div>
                                 <div class="range-input">
-                                    <input type="range" class="range-min" min="0" max="1000000" value="250000" step="100">
-                                    <input type="range" class="range-max" min="0" max="1000000" value="750000" step="100">
+                                    <input type="range" class="range-min" min="50000" max="5000000" value="1250000" step="100">
+                                    <input type="range" class="range-max" min="50000" max="5000000" value="3750000" step="100">
                                 </div>
                             </div>
                             
@@ -346,32 +346,36 @@
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">
                 <h6 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Our Blog</h6>
-                <h1>Latest From Our Blog</h1>
+                <h1>Latest Articles</h1>
             </div>
             <div class="row pb-3">
                 @foreach($blogs as $blog)
                 <div class="col-lg-4 col-md-6 mb-4 pb-2">
-                    <div class="blog-item">
-                        <div class="position-relative">
-                            <img class="img-fluid w-100" src="{{ asset('images/' . $blog->image) }}" alt="{{ $blog->title }}">
-                            <div class="blog-date">
-                                <h6 class="font-weight-bold mb-0">
-                                    {{ $blog->created_at->format('d M') }}
-                                </h6>
-                                <small class="text-white">{{ $blog->created_at->format('Y') }}</small>
+                    <a href="{{ route('blog.show', $blog->slug) }}" class="text-decoration-none text-dark">
+                        <div class="blog-item">
+                            <div class="position-relative">
+                                <img class="img-fluid w-100" src="{{ asset('images/' . $blog->image) }}" alt="{{ $blog->title }}">
+                                <div class="blog-date">
+                                    <h6 class="font-weight-bold mb-0">
+                                        {{ $blog->created_at->format('d M') }}
+                                    </h6>
+                                    <small class="text-white">{{ $blog->created_at->format('Y') }}</small>
+                                </div>
+                            </div>
+                            <div class="bg-white p-4">
+                                <div class="d-flex mb-2">
+                                    <div class="text-primary text-uppercase text-decoration-none font-weight-bold" >By {{ $blog->author }}</div>
+                                </div>
+                                {{ Str::limit(strip_tags($blog->title), 25) }}
                             </div>
                         </div>
-                        <div class="bg-white p-4">
-                            <div class="d-flex mb-2">
-                                <a class="text-primary text-uppercase text-decoration-none font-weight-bold" href="">By {{ $blog->author }}</a>
-                            </div>
-                            <a class="h5 m-0 text-decoration-none" href="#">{{ Str::limit(strip_tags($blog->title), 25) }}</a>
-                            <p class="card-text">{{ Str::limit(strip_tags($blog->description), 50) }}</p>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 @endforeach
                 
+            </div>
+            <div class="text-center mb-3 pb-3">
+                <a href="{{ route('blog.index') }}" class="h4 text-dark">View All</a>
             </div>
         </div>
     </div>

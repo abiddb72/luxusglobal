@@ -40,11 +40,19 @@
           </a>
         </li>
 
-        <!-- Banks -->
+        <!-- Banners -->
         <li class="nav-item">
           <a href="{{ route('admin.banners.index') }}" class="nav-link {{ request()->is('admin/banners*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-image"></i>
             <p>Banners</p>
+          </a>
+        </li>
+
+        <!-- Banners -->
+        <li class="nav-item">
+          <a href="{{ route('admin.blogs.index') }}" class="nav-link {{ request()->is('admin/blogs*') ? 'active' : '' }}">
+            <i class="nav-icon fas fa-image"></i>
+            <p>Blogs</p>
           </a>
         </li>
 

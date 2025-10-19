@@ -23,6 +23,8 @@ use App\Http\Controllers\Admin\ClientAdminController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\BlogAdminController;
+use App\Http\Controllers\BlogController;
 
 Route::get('/clear-cache', function() {
     Artisan::call('config:clear');
@@ -62,10 +64,17 @@ Route::post('admin/logout', [AdminAuthController::class, 'logout'])->name('admin
 
 Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsletter.store');
 
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+
 // Admin protected routes
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    Route::resource('blogs',BlogAdminController::class)->names('admin.blogs');
+
 
     Route::get('/newsletter', [NewsletterController::class, 'index'])->name('admin.newsletter.index');
 
