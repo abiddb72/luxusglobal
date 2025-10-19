@@ -17,18 +17,21 @@ class AdminUserSeeder extends Seeder
             [
                 'name' => 'Muhammad Abid',
                 'email' => 'admin@admin.com',
+                'phone' => '00011122233',
                 'password' => Hash::make('admin123'),
                 'is_admin' => 1,
             ],
             [
                 'name' => 'Bilal',
                 'email' => 'bilal@admin.com',
+                'phone' => '00011122233',
                 'password' => Hash::make('admin123'),
                 'is_admin' => 1,
             ],
             [
                 'name' => 'Rabia',
                 'email' => 'rabia@admin.com',
+                'phone' => '00011122233',
                 'password' => Hash::make('admin123'),
                 'is_admin' => 1,
             ],

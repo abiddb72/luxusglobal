@@ -5,7 +5,10 @@
       <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
     </li>
     <li class="nav-item d-none d-sm-inline-block">
-      <a href="{{ route('admin.dashboard') }}" class="nav-link"><i class="fas fa-home"></i> Home</a>
+      <a href="{{ route('admin.dashboard') }}" class="nav-link">Home</a>
+    </li>
+    <li class="nav-item d-none d-sm-inline-block">
+      <a href="{{ route('admin.profile') }}" class="nav-link">Profile</a>
     </li>
   </ul>
 
@@ -37,6 +40,13 @@
     <li class="nav-item">
       <a href="{{ route('admin.settings') }}" class="nav-link" title="Settings">
         <i class="fas fa-cogs"></i>
+      </a>
+    </li>
+
+    <!-- Profile -->
+    <li class="nav-item">
+      <a href="{{ route('admin.profile') }}" class="nav-link" title="Profile">
+        <i class="fas fa-user"></i>
       </a>
     </li>
 

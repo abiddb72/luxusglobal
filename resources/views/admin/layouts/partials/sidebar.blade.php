@@ -11,10 +11,13 @@
     <!-- User Panel -->
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
       <div class="image">
-        <img src="{{ asset('admin_theme/dist/img/user2-160x160.jpg') }}" class="img-circle elevation-2" alt="User Image">
+        @php
+            $userImage = Auth::user()->image ? asset('images/'.Auth::user()->image) : asset('images/default-avatar.jpg');
+        @endphp
+        <img src="{{ $userImage }}" width="40" height="40" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a href="#" class="d-block">{{ Auth::user()->name }}</a>
+        <a href="{{ route('admin.profile') }}" class="d-block">{{ Auth::user()->name }}</a>
       </div>
     </div>
 
@@ -51,7 +54,7 @@
         <!-- Banners -->
         <li class="nav-item">
           <a href="{{ route('admin.blogs.index') }}" class="nav-link {{ request()->is('admin/blogs*') ? 'active' : '' }}">
-            <i class="nav-icon fas fa-image"></i>
+            <i class="nav-icon fas fa-newspaper"></i>
             <p>Blogs</p>
           </a>
         </li>
