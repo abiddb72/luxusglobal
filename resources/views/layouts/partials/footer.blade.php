@@ -122,7 +122,7 @@
             <div class="w-100">
                 <form action="{{ route('newsletter.store') }}" method="POST">
                     @csrf
-                    <input type="email" name="email" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
+                    <input type="email" name="newsletter_email" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
                     <div class="input-group-append">
                         <button type="submit" class="btn btn-primary px-3">Subscribe</button>
                     </div>

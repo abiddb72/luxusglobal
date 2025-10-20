@@ -19,9 +19,10 @@
         <div class="row">
             <div class="col-lg-4 mb-4">
                 <h3 class="mb-4">Contact Information</h3>
-                <p><i class="fa fa-map-marker-alt text-primary mr-2"></i> Example Street, Karachi, Pakistan</p>
-                <p><i class="fa fa-phone-alt text-primary mr-2"></i> +0000 112 122</p>
-                <p><i class="fa fa-envelope text-primary mr-2"></i> info@example.com</p>
+                
+                <p><i class="fa fa-map-marker-alt mr-2"></i>{{ $global_settings->address }}</p>
+                <p><i class="fa fa-phone-alt mr-2"></i>{{ $global_settings->contact_no }}</p>
+                <p><i class="fa fa-envelope mr-2"></i>{{ $global_settings->email }}</p>
             </div>
 
             <div class="col-lg-8">

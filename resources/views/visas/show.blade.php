@@ -36,7 +36,7 @@
                                 @endif
                             </div>
                             <div class="col-10">
-                                {!! nl2br(e($visa->visa_description)) !!}
+                               {!! $visa->visa_description !!}
                             </div>
                         </div>
                     </div>
@@ -54,7 +54,7 @@
                 </div>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div class="card-body">
-                        {!! nl2br(e($visa->embassy_requirements)) !!}
+                       {!! $visa->embassy_requirements !!}
                     </div>
                 </div>
             </div>
@@ -70,7 +70,7 @@
                 </div>
                 <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
                     <div class="card-body">
-                        {!! nl2br(e($visa->duration_description)) !!}
+                       {!! $visa->duration_description !!}
                     </div>
                 </div>
             </div>

@@ -13,14 +13,14 @@ class NewsletterController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:newsletters,email'
+            'newsletter_email' => 'required|email|unique:newsletters,email'
         ]);
 
         Newsletter::create([
-            'email' => $request->email
+            'email' => $request->newsletter_email
         ]);
 
-        Mail::to('admin@gmail.com')->send(new NewsletterMail($request->email));
+        Mail::to('abiddb72@gmail.com')->send(new NewsletterMail($request->newsletter_email));
 
         return back()->with('success', 'Thank you for subscribing!');
     }
