@@ -23,6 +23,22 @@
             </div>
         </div>
 
+        <!-- Package Queries -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="small-box bg-dark">
+                <div class="inner">
+                    <h3>{{ $data['total_queries'] }}</h3>
+                    <p>Package Enquiries</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-box-open"></i>
+                </div>
+                <a href="{{ route('admin.package_queries.index') }}" class="small-box-footer">
+                    View Details <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+
         <!-- Total Visas -->
         <div class="col-lg-3 col-md-6 mb-4">
             <div class="small-box bg-success">
@@ -34,6 +50,22 @@
                     <i class="fas fa-passport"></i>
                 </div>
                 <a href="{{ route('admin.visas.index') }}" class="small-box-footer">
+                    View All <i class="fas fa-arrow-circle-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Blogs Messages -->
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>{{ $data['total_blog'] }}</h3>
+                    <p>Blogs & Articles</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <a href="{{ route('admin.blogs.index') }}" class="small-box-footer">
                     View All <i class="fas fa-arrow-circle-right"></i>
                 </a>
             </div>
@@ -71,13 +103,19 @@
             </div>
         </div>
 
+        
+
     </div>
 
     <!-- Welcome Note -->
     <div class="card mt-4">
         <div class="card-body">
             <h4>Welcome Back, {{ Auth::user()->name }} 👋</h4>
-            <p>Manage your website content using the menu on the left.</p>
+            <p>Manage and customize every part of your website with ease using the menu on the left.<br>
+                From pages to packages, everything is just a click away.<br>
+                Stay organized, update content quickly, and keep your site fresh for visitors.<br>
+                If you need any assistance, your tools and settings are always within reach.<br>
+                Let’s make your admin experience simple and powerful!</p>
         </div>
     </div>
 

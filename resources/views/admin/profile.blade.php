@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label>Email Address <span class="text-danger">*</span></label>
                         <input type="email" name="email" class="form-control" 
-                               value="{{ old('email', $user->email) }}" required>
+                               value="{{ old('email', $user->email) }}" readonly>
                     </div>
 
                     <div class="form-group">

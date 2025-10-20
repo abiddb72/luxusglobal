@@ -26,6 +26,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BlogAdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\AdminProfileController;
+use App\Http\Controllers\Admin\UserController;
 
 Route::get('/clear-cache', function() {
     Artisan::call('config:clear');
@@ -73,6 +74,8 @@ Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+    Route::resource('users', UserController::class)->names('admin.users');
 
     // Admin Profile Routes
     Route::get('profile', [AdminProfileController::class, 'index'])->name('admin.profile');

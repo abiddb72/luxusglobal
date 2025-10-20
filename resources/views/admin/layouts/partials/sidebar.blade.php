@@ -55,7 +55,7 @@
         <li class="nav-item">
           <a href="{{ route('admin.blogs.index') }}" class="nav-link {{ request()->is('admin/blogs*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-newspaper"></i>
-            <p>Blogs</p>
+            <p>Blogs & Articles</p>
           </a>
         </li>
 

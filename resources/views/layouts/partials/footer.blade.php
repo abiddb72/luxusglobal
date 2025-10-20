@@ -101,6 +101,7 @@
         <div class="col-lg-2 col-md-6 mb-5">
             <h5 class="text-white text-uppercase mb-4" style="letter-spacing: 5px;">Other Links</h5>
             <div class="d-flex flex-column justify-content-start">
+                <a href="{{ url('blog') }}" class="text-white-50 mb-2"><i class="fa fa-angle-right mr-2"></i>Blogs</a>
                 @foreach($global_pages as $page)
                     <a href="{{ route('page', $page->slug) }}" class="text-white-50 mb-2">
                         <i class="fa fa-angle-right mr-2"></i>{{ $page->title }}
@@ -122,8 +123,9 @@
             <div class="w-100">
                 <form action="{{ route('newsletter.store') }}" method="POST">
                     @csrf
-                    <input type="email" name="newsletter_email" class="form-control border-light" style="padding: 25px;" placeholder="Your Email">
+                    
                     <div class="input-group-append">
+                        <input type="email" name="newsletter_email" class="form-control border-light" style="padding: 25px;" placeholder="Your Email"/>
                         <button type="submit" class="btn btn-primary px-3">Subscribe</button>
                     </div>
                 </form>
