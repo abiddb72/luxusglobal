@@ -27,7 +27,7 @@
                     </button>
                     </h5>
                 </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" >
                     <div class="card-body">
                         <div class="row">
                             <div class="col-2">
@@ -52,7 +52,7 @@
                     </button>
                     </h5>
                 </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" >
                     <div class="card-body">
                        {!! $visa->embassy_requirements !!}
                     </div>
@@ -68,7 +68,7 @@
                     </button>
                     </h5>
                 </div>
-                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" >
                     <div class="card-body">
                        {!! $visa->duration_description !!}
                     </div>

@@ -43,7 +43,7 @@
                         <label>Type <span class="text-danger">*</span></label>
                         <select name="type" class="form-control" required>
                             <option value="1" {{ old('type')==1 ? 'selected' : '' }}>Package</option>
-                            <option value="2" {{ old('type')==2 ? 'selected' : '' }}>Religion</option>
+                            <option value="2" {{ old('type')==2 ? 'selected' : '' }}>Hajj & Umrah</option>
                             <option value="3" {{ old('type')==3 ? 'selected' : '' }}>Event</option>
                         </select>
                     </div>

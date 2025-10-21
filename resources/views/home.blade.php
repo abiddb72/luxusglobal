@@ -289,7 +289,7 @@
                                                 </small>
                                             </div>
                                             <a class="h5 text-decoration-none" href="{{ route('package.details', $package->slug) }}">
-                                                {{ $package->title }}
+                                                {{ mb_strimwidth($package->title, 0, 25, '...') }}
                                             </a>
                                             <div class="border-top mt-4 pt-4">
                                                 <div class="d-flex justify-content-between">
@@ -383,47 +383,60 @@
 @endsection
 @section('scripts')
 <script>
-const rangeInput = document.querySelectorAll(".range-input input"),
-  priceInput = document.querySelectorAll(".price-input input"),
-  range = document.querySelector(".slider .progress");
-let priceGap = 1000;
+document.addEventListener("DOMContentLoaded", function () {
+  const rangeInputs = document.querySelectorAll(".range-input input");
+  const priceInputs = document.querySelectorAll(".price-input input");
+  const range = document.querySelector(".slider .progress");
+  const priceGap = 1000;
 
-priceInput.forEach((input) => {
-  input.addEventListener("input", (e) => {
-    let minPrice = parseInt(priceInput[0].value),
-      maxPrice = parseInt(priceInput[1].value);
+  function updateProgress(minVal, maxVal) {
+    const maxRange = parseInt(rangeInputs[0].max);
+    range.style.left = (minVal / maxRange) * 100 + "%";
+    range.style.right = 100 - (maxVal / maxRange) * 100 + "%";
+  }
 
-    if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInput[1].max) {
-      if (e.target.className === "input-min") {
-        rangeInput[0].value = minPrice;
-        range.style.left = (minPrice / rangeInput[0].max) * 100 + "%";
-      } else {
-        rangeInput[1].value = maxPrice;
-        range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+  // Sync numeric inputs → range slider
+  priceInputs.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      let minPrice = parseInt(priceInputs[0].value) || 0;
+      let maxPrice = parseInt(priceInputs[1].value) || 0;
+
+      if (maxPrice - minPrice >= priceGap && maxPrice <= rangeInputs[1].max) {
+        if (e.target.classList.contains("input-min")) {
+          rangeInputs[0].value = minPrice;
+        } else {
+          rangeInputs[1].value = maxPrice;
+        }
+        updateProgress(minPrice, maxPrice);
       }
-    }
+    });
   });
-});
 
-rangeInput.forEach((input) => {
-  input.addEventListener("input", (e) => {
-    let minVal = parseInt(rangeInput[0].value),
-      maxVal = parseInt(rangeInput[1].value);
+  // Sync range slider → numeric inputs
+  rangeInputs.forEach((input) => {
+    input.addEventListener("input", (e) => {
+      let minVal = parseInt(rangeInputs[0].value);
+      let maxVal = parseInt(rangeInputs[1].value);
 
-    if (maxVal - minVal < priceGap) {
-      if (e.target.className === "range-min") {
-        rangeInput[0].value = maxVal - priceGap;
+      if (maxVal - minVal < priceGap) {
+        if (e.target.classList.contains("range-min")) {
+          rangeInputs[0].value = maxVal - priceGap;
+        } else {
+          rangeInputs[1].value = minVal + priceGap;
+        }
       } else {
-        rangeInput[1].value = minVal + priceGap;
+        priceInputs[0].value = minVal;
+        priceInputs[1].value = maxVal;
+        updateProgress(minVal, maxVal);
       }
-    } else {
-      priceInput[0].value = minVal;
-      priceInput[1].value = maxVal;
-      range.style.left = (minVal / rangeInput[0].max) * 100 + "%";
-      range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
-    }
+    });
   });
-});
 
+  // ✅ Initialize range progress correctly on page load
+  const initialMin = parseInt(priceInputs[0].value) || parseInt(rangeInputs[0].min);
+  const initialMax = parseInt(priceInputs[1].value) || parseInt(rangeInputs[1].max);
+  updateProgress(initialMin, initialMax);
+});
 </script>
+
 @endsection

@@ -738,7 +738,7 @@ pre code {
   padding: 5px 20px;
   font-weight: bold;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  font-size: 16px;
+  font-size: 20px;
 }
 .ribbon_exp {
   position: absolute;
@@ -749,7 +749,7 @@ pre code {
   padding: 5px 20px;
   font-weight: bold;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-  font-size: 16px;
+  font-size: 20px;
 }
 .bank-img {
   width: 150px;
@@ -9905,7 +9905,7 @@ h6,
   position: fixed;
   width: 60px;
   height: 60px;
-  bottom: 120px;
+  bottom: 100px;
   right: 25px;
   background-color: #25d366;
   color: #fff;

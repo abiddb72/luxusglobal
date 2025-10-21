@@ -24,7 +24,7 @@
         </div>
 
         <!-- Package Queries -->
-        <div class="col-lg-3 col-md-6 mb-4">
+        {{-- <div class="col-lg-3 col-md-6 mb-4">
             <div class="small-box bg-dark">
                 <div class="inner">
                     <h3>{{ $data['total_queries'] }}</h3>
@@ -37,7 +37,7 @@
                     View Details <i class="fas fa-arrow-circle-right"></i>
                 </a>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Total Visas -->
         <div class="col-lg-3 col-md-6 mb-4">
@@ -72,7 +72,7 @@
         </div>
 
         <!-- Contact Messages -->
-        <div class="col-lg-3 col-md-6 mb-4">
+        {{-- <div class="col-lg-3 col-md-6 mb-4">
             <div class="small-box bg-warning">
                 <div class="inner">
                     <h3>{{ $data['total_contacts'] }}</h3>
@@ -85,7 +85,7 @@
                     View All <i class="fas fa-arrow-circle-right"></i>
                 </a>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Newsletter Subscribers -->
         <div class="col-lg-3 col-md-6 mb-4">

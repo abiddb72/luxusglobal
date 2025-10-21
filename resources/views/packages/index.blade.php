@@ -35,7 +35,7 @@
                                         <div class="ribbon">TOP</div>
                                     @endif
                                     @if($package->expire_date && $package->expire_date < now())
-                                        <div class="ribbon_exp">EXPIRE</div>
+                                        <div class="ribbon_exp">EXPIRED</div>
                                     @endif
                                     <img class="img-fluid" src="{{ asset('images/' . $package->image) }}" alt="">
                                     <div class="p-4">
@@ -48,7 +48,7 @@
                                             </small>
                                         </div>
                                         <a class="h5 text-decoration-none" href="{{ route('package.details', $package->slug) }}">
-                                            {{ $package->title }}
+                                            {{ mb_strimwidth($package->title, 0, 25, '...') }}
                                         </a>
                                         <div class="border-top mt-4 pt-4">
                                             <div class="d-flex justify-content-between">
@@ -89,7 +89,7 @@
                                 </small>
                             </div>
                             <a class="h5 text-decoration-none" href="{{ route('package.details', $package->slug) }}">
-                                {{ $package->title }}
+                                {{ mb_strimwidth($package->title, 0, 25, '...') }}
                             </a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">

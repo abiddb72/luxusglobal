@@ -71,7 +71,7 @@
         <li class="nav-item">
           <a href="{{ route('admin.clients.index') }}" class="nav-link {{ request()->is('admin/clients*') ? 'active' : '' }}">
             <i class="nav-icon fas fa-users"></i>
-            <p>Clients</p>
+            <p>Clients & Testimonial</p>
           </a>
         </li>
 
