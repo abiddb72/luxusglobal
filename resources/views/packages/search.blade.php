@@ -64,7 +64,7 @@
                 <div class="field">
                     <span>Max</span>
                     <input type="number" name="max_price" class="input-max" 
-                        value="{{ request('max_price', 3750000) }}">
+                        value="{{ request('max_price', 5750000) }}">
                 </div>
             </div>
             <div class="slider">
@@ -72,11 +72,11 @@
             </div>
             <div class="range-input">
                 <input type="range" class="range-min" 
-                    name="min_price_range" min="50000" max="5000000" 
+                    name="min_price_range" min="50000" max="10000000" 
                     value="{{ request('min_price', 1250000) }}" step="100">
                 <input type="range" class="range-max" 
-                    name="max_price_range" min="50000" max="5000000" 
-                    value="{{ request('max_price', 3750000) }}" step="100">
+                    name="max_price_range" min="50000" max="10000000" 
+                    value="{{ request('max_price', 5750000) }}" step="100">
             </div>
         </div>
 

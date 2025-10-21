@@ -74,15 +74,15 @@
                                     <div class="separator">-</div>
                                     <div class="field">
                                         <span>Max</span>
-                                        <input type="number" name="max_price" class="input-max" value="3750000">
+                                        <input type="number" name="max_price" class="input-max" value="5750000">
                                     </div>
                                 </div>
                                 <div class="slider">
                                     <div class="progress"></div>
                                 </div>
                                 <div class="range-input">
-                                    <input type="range" class="range-min" min="50000" max="5000000" value="1250000" step="100">
-                                    <input type="range" class="range-max" min="50000" max="5000000" value="3750000" step="100">
+                                    <input type="range" class="range-min" min="50000" max="10000000" value="1250000" step="100">
+                                    <input type="range" class="range-max" min="50000" max="10000000" value="5750000" step="100">
                                 </div>
                             </div>
                             
