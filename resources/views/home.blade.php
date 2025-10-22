@@ -120,13 +120,15 @@
                     <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
                         <h6 class="text-secondary text-uppercase" style="letter-spacing: 5px;">About Us</h6>
                         <h1 class="mb-3">We Provide Best Tour Packages In Your Budget</h1>
-                        <p>Dolores lorem lorem ipsum sit et ipsum. Sadip sea amet diam dolore sed et. Sit rebum labore sit sit ut vero no sit. Et elitr stet dolor sed sit et sed ipsum et kasd ut. Erat duo eos et erat sed diam duo</p>
+                        <p>Explore the world with our expertly crafted international and domestic travel packages.
+Whether you’re planning a global adventure or a local escape, we’ve got you covered.
+Discover comfort, value, and unforgettable experiences wherever you go.</p>
                         <div class="row mb-4">
                             <div class="col-6">
-                                <img class="img-fluid" src="{{ asset('theme/img/about-1.jpg') }}" alt="">
+                                <a href="{{ url('packages/domestic') }}"><img class="img-fluid" src="{{ asset('theme/img/about-1.jpg') }}" alt=""></a>
                             </div>
                             <div class="col-6">
-                                <img class="img-fluid" src="{{ asset('theme/img/about-2.jpg') }}" alt="">
+                                <a href="{{ url('packages/international') }}"><img class="img-fluid" src="{{ asset('theme/img/about-2.jpg') }}" alt=""></a>
                             </div>
                         </div>
                     </div>
@@ -163,6 +165,9 @@
             </div>
         @endforelse
     </div>
+    <div class="text-center mb-3 pb-3">
+                <a href="{{ route('visas.index') }}" class="h4 text-dark">View All</a>
+            </div>
 </div>
 
     <!-- Service Start -->
@@ -288,8 +293,8 @@
                                                     <i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $package->stay }}
                                                 </small>
                                             </div>
-                                            <a class="h5 text-decoration-none" href="{{ route('package.details', $package->slug) }}">
-                                                {{ mb_strimwidth($package->title, 0, 25, '...') }}
+                                            <a class="h5 text-decoration-none d-block" style="min-height: 40px;" href="{{ route('package.details', $package->slug) }}">
+                                                {{ mb_strimwidth($package->title, 0, 70, '...') }}
                                             </a>
                                             <div class="border-top mt-4 pt-4">
                                                 <div class="d-flex justify-content-between">

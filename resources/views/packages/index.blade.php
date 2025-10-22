@@ -47,8 +47,8 @@
                                                 <i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $package->stay }}
                                             </small>
                                         </div>
-                                        <a class="h5 text-decoration-none" href="{{ route('package.details', $package->slug) }}">
-                                            {{ mb_strimwidth($package->title, 0, 25, '...') }}
+                                        <a class="h5 text-decoration-none d-block" style="min-height: 40px;" href="{{ route('package.details', $package->slug) }}">
+                                            {{ mb_strimwidth($package->title, 0, 70, '...') }}
                                         </a>
                                         <div class="border-top mt-4 pt-4">
                                             <div class="d-flex justify-content-between">
@@ -88,8 +88,8 @@
                                     <i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $package->stay }}
                                 </small>
                             </div>
-                            <a class="h5 text-decoration-none" href="{{ route('package.details', $package->slug) }}">
-                                {{ mb_strimwidth($package->title, 0, 25, '...') }}
+                            <a class="h5 text-decoration-none d-block" style="min-height: 40px;" href="{{ route('package.details', $package->slug) }}">
+                                {{ mb_strimwidth($package->title, 0, 70, '...') }}
                             </a>
                             <div class="border-top mt-4 pt-4">
                                 <div class="d-flex justify-content-between">
