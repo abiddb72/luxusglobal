@@ -106,41 +106,74 @@
 
     
 
+<div class="container">
+    <div class="text-center mb-3 pb-3">
+        <h5 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Travel The World Today</h5>
+        <h1>Top travel deals for every budget.</h1>
+    </div>
+    <div class="row">
 
-    <!-- About Start -->
-    <div class="container-fluid py-2">
-        <div class="container pt-5">
-            <div class="row">
-                <div class="col-lg-6" style="min-height: 500px;">
-                    <div class="position-relative h-100">
-                        <img class="position-absolute w-100 h-100" src="{{ asset('theme/img/about.jpg') }}" style="object-fit: cover;">
+        @foreach($all_packages as $package)
+            <div class="col-md-4 mb-4">
+                <div class="card listing-card">
+
+                    <!-- IMAGE + BADGE -->
+                    <div class="position-relative">
+                        <img src="{{ asset('images/' . $package->image) }}"
+                            class="card-img-top listing-img" alt="Package Image">
+
+                        @if(!empty($package->is_featured))
+                            <span class="badge badge-dark badge-custom">Top</span>
+                        @endif
+
+                        @if($package->expire_date && $package->expire_date < now())
+                            <span class="badge badge-danger badge-custom-exp">Expired</span>
+                        @endif
+
+                        
                     </div>
-                </div>
-                <div class="col-lg-6 pt-5 pb-lg-5">
-                    <div class="about-text bg-white p-4 p-lg-5 my-lg-5">
-                        <h6 class="text-secondary text-uppercase" style="letter-spacing: 5px;">About Us</h6>
-                        <h1 class="mb-3">We Provide Best Tour Packages In Your Budget</h1>
-                        <p>Explore the world with our expertly crafted international and domestic travel packages.
-Whether you’re planning a global adventure or a local escape, we’ve got you covered.
-Discover comfort, value, and unforgettable experiences wherever you go.</p>
-                        <div class="row mb-4">
-                            <div class="col-6">
-                                <a href="{{ url('packages/domestic') }}"><img class="img-fluid" src="{{ asset('theme/img/about-1.jpg') }}" alt=""></a>
+
+                    <!-- BODY -->
+                    <div class="card-body">
+                        
+                        <!-- TITLE -->
+                        <a href="{{ route('package.details', $package->slug) }}">
+                            <h5 class="h5 text-decoration-none d-block" style="min-height: 40px;">
+                                {{ mb_strimwidth($package->title, 0, 70, '...') }}
+                            </h5>
+                        </a>
+
+                        <!-- PRICE -->
+                        <p class="price-tag mb-3">Rs {{ number_format($package->price, 0) }}</p>
+
+                        <!-- LOCATION & DATE -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <i class="fas fa-map-marker-alt text-danger" style="font-size: 14px;"></i>
+                                <i class="text-dark" style="font-size: 14px;">{{ $package->departure_city }}</i>
                             </div>
-                            <div class="col-6">
-                                <a href="{{ url('packages/international') }}"><img class="img-fluid" src="{{ asset('theme/img/about-2.jpg') }}" alt=""></a>
+                            <div class="col-md-6 text-right">
+                                <i class="fas fa-calendar-alt text-primary" style="font-size: 14px;"></i>
+                                <i class="text-dark" style="font-size: 14px;">
+                                    {{ \Carbon\Carbon::parse($package->stay)->format('d M Y') }}
+                                </i>
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
-        </div>
+        @endforeach
+
     </div>
-    <!-- About End -->
+</div>
 
-    <div class="container my-5">
+<div class="container my-5">
 
-    <h2 class="text-center mb-4">Worldwide Visa</h2>
+    <div class="text-center mb-3 pb-3">
+        <h5 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Trusted Global Visa Experts</h5>
+        <h1>Professional Support For All International Journeys</h1>
+    </div>
 
     <div class="row">
         @forelse($visas as $visa)
@@ -169,13 +202,16 @@ Discover comfort, value, and unforgettable experiences wherever you go.</p>
                 <a href="{{ route('visas.index') }}" class="h4 text-dark">View All</a>
             </div>
 </div>
+    
+
+    
 
     <!-- Service Start -->
-    <div class="container-fluid py-2">
-        <div class="container pt-5 pb-3">
+    <div class="container-fluid py-5 bg-light">
+        <div class="container">
             <div class="text-center mb-3 pb-3">
-                <h6 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Services</h6>
-                <h1>Your Journey Begins Here</h1>
+                <h5 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Our Professional Services</h5>
+                <h1>Delivering Quality Solutions With Reliable Expert Support</h1>
             </div>
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4">
@@ -199,14 +235,14 @@ Discover comfort, value, and unforgettable experiences wherever you go.</p>
                         <p class="m-0">Discover your ideal stay, from luxury resorts to cozy budget hotels. We ensure comfort and value at every destination.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-6 col-md-6 mb-4">
                     <div class="service-item bg-white text-center mb-2 py-4 px-2">
                         <i class="fa fa-2x fa-hotel mx-auto mb-4"></i>
-                        <h5 class="mb-2">Hajj & Umras</h5>
+                        <h5 class="mb-2">Hajj & Umrah</h5>
                         <p class="m-0">Spiritual journeys with peace of mind. Our specialized packages offer complete guidance and compassionate support.</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-6 col-md-6 mb-4">
                     <div class="service-item bg-white text-center mb-2 py-4 px-2">
                         <i class="fa fa-2x fa-route mx-auto mb-4"></i>
                         <h5 class="mb-2">Tours Domestic & International</h5>
@@ -246,79 +282,14 @@ Discover comfort, value, and unforgettable experiences wherever you go.</p>
     </div>
     <!-- Service End -->
 
-    <!-- Packages Start -->
-    <div class="container-fluid py-5">
-        <div class="container pt-5 pb-3">
-            <div class="text-center mb-3 pb-3">
-                <h6 class="text-primary text-uppercase" style="letter-spacing: 5px;">Packages</h6>
-                <h1>International</h1>
-            </div>
-
-            <!-- Tabs for each departure city -->
-            <ul class="nav nav-pills justify-content-center mb-3" id="internationalSubTab" role="tablist">
-                @foreach($grouped_packages as $city => $packages)
-                    <li class="nav-item">
-                        <a class="nav-link tab-btn {{ $loop->first ? 'active' : '' }}" id="{{ strtolower($city) }}-tab"
-                            data-toggle="pill" href="#{{ strtolower($city) }}" role="tab">
-                            From {{ $city }}
-                        </a>
-                    </li>
-                @endforeach
-            </ul>
-
-            <!-- Tab Content -->
-            <div class="tab-content" id="internationalSubTabContent">
-                @foreach($grouped_packages as $city => $packages)
-                    <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="{{ strtolower($city) }}" role="tabpanel">
-                        <div class="row">
-                            @foreach($packages as $package)
-                                <div class="col-lg-4 col-md-6 mb-4">
-                                    <div class="package-item bg-white mb-2 position-relative">
-                                        
-                                        @if($package->is_featured)
-                                            <div class="ribbon">TOP</div>
-                                        @endif
-
-                                        @if($package->expire_date < now())
-                                            <div class="ribbon_exp">EXPIRED</div>
-                                        @endif
-                                        
-                                        <img class="img-fluid" src="{{ asset('images/' .$package->image) }}" alt="{{ $package->title }}">
-                                        <div class="p-4">
-                                            <div class="d-flex justify-content-between flex-wrap mb-3">
-                                                <small class="my-2 w-100">
-                                                    <i class="fa fa-map-marker-alt text-primary mr-2"></i>{{ $package->departure_city }}
-                                                </small>
-                                                <small class="my-2 w-100">
-                                                    <i class="fa fa-calendar-alt text-primary mr-2"></i>{{ $package->stay }}
-                                                </small>
-                                            </div>
-                                            <a class="h5 text-decoration-none d-block" style="min-height: 40px;" href="{{ route('package.details', $package->slug) }}">
-                                                {{ mb_strimwidth($package->title, 0, 70, '...') }}
-                                            </a>
-                                            <div class="border-top mt-4 pt-4">
-                                                <div class="d-flex justify-content-between">
-                                                    <h5 class="m-0">Rs {{ number_format($package->price) }}</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <!-- Packages End -->
+    
 
     <!-- Testimonial Start -->
-<div class="container-fluid py-2">
-    <div class="container py-2">
+<div class="container-fluid py-5">
+    <div class="container">
         <div class="text-center mb-3 pb-3">
-            <h6 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Testimonial</h6>
-            <h1>What Say Our Clients</h1>
+            <h5 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Client Testimonials & Feedback</h5>
+            <h1>Honest Reviews Reflecting Our Quality Service</h1>
         </div>
 
         <div class="owl-carousel testimonial-carousel">
@@ -327,12 +298,31 @@ Discover comfort, value, and unforgettable experiences wherever you go.</p>
                     <img class="img-fluid mx-auto"
                          src="{{ asset('images/' . $client->image) }}"
                          style="width: 100px; height: 100px; object-fit: cover; border-radius: 50%;">
-                    
+
                     <div class="testimonial-text bg-white p-4 mt-n5">
-                        <p class="mt-5">
-                            {{ Str::limit($client->description, 150, '...') }}
-                        </p>
-                        <h5 class="text-truncate">{{ $client->name }}</h5>
+
+                        <!-- ⭐ Rating Stars Start -->
+                        <div class="mb-2 mt-5">
+                            @php
+                                $rating = $client->rating; // value from DB (1–5)
+                            @endphp
+
+                            @for($i = 1; $i <= 5; $i++)
+                                @if($i <= $rating)
+                                    <!-- Filled Star -->
+                                    <i class="fas fa-star" style="color: #f6b500; font-size: 18px;"></i>
+                                @else
+                                    <!-- Empty Star -->
+                                    <i class="far fa-star" style="color: #ccc; font-size: 18px;"></i>
+                                @endif
+                            @endfor
+                        </div>
+                        <!-- ⭐ Rating Stars End -->
+
+                        <a href="{{ route('client.show', $client->slug) }}">
+                            <h5 class="text-truncate">{{ $client->name }}</h5>
+                        </a>
+
                         <span>{{ $client->profession }}</span>
                     </div>
                 </div>
@@ -343,15 +333,56 @@ Discover comfort, value, and unforgettable experiences wherever you go.</p>
 
 <!-- Testimonial End -->
 
+<div class="container-fluid py-5 bg-light">
 
+    <!-- HEADING -->
+    <div class="text-center mb-4">
+        <h5 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Our Airline Partners</h5>
+                <h1>Connecting You With Trusted Global Airlines</h1>
+    </div>
+
+    <!-- Repeat these cols for all 10 images -->
+    <div class="airline-wrapper">
+        <img src="{{ asset('images/airlines/air_arabia.jpg') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/air_china.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/airblue.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/airfrance.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/american.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/british.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/cathey.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/china_southern.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/eitihad.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/emirates.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/flydubai.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/gulf.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/Japan_Airlines_log.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/kuwait.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/malaysia.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/malindo-airlines.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/oman.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/PIA.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/qantas.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/qatar.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/royal_brunei.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/royal_dutch.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/saudia.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/shaheenair.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/singapore.jpg') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/srilanka.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/Thai.png') }}" class="airline-img" alt="Airline Logo">
+        <img src="{{ asset('images/airlines/turkish_air.png') }}" class="airline-img" alt="Airline Logo">
+    </div>
+
+        
+</div>
     
 
       <!-- Blog Start -->
     <div class="container-fluid py-2">
         <div class="container pt-5 pb-3">
             <div class="text-center mb-3 pb-3">
-                <h6 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Our Blog</h6>
-                <h1>Latest Articles</h1>
+                <h5 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Latest Articles & Blog Updates</h5>
+                <h1>Fresh Insights Shared To Inspire Your Journey</h1>
             </div>
             <div class="row pb-3">
                 @foreach($blogs as $blog)
@@ -385,6 +416,45 @@ Discover comfort, value, and unforgettable experiences wherever you go.</p>
         </div>
     </div>
     <!-- Blog End -->
+
+
+    <!-- ✅ THUMBNAIL IMAGES (4 images) -->
+    <div class="container">
+        <div class="text-center mb-3 py-3">
+                <h5 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Journey Through Our Happy Clients</h5>
+                <h1>Capturing moments from clients’ amazing travel experiences</h1>
+            </div>
+        <div class="row">
+
+            @forelse ($gallery as $img)
+                <div class="col-md-3 mb-3">
+                    <img src="{{ asset('images/' . $img->image) }}"
+                        class="thumb-img"
+                        onclick="openLightbox(this.src)">
+                </div>
+            @empty
+                <p class="text-muted">No gallery images available.</p>
+            @endforelse
+
+        </div>
+    </div>
+
+    <!-- ✅ LIGHTBOX MODAL -->
+<div class="modal fade" id="lightboxModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <button type="button" style="font-size: 5em; outline:none;border:none; color:red !important;" class="close text-white" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        
+        <div class="modal-content bg-dark">
+            <div class="modal-body p-2">
+                <img id="lightboxImg" src="" class="img-fluid w-100">
+            </div>
+        </div>
+    </div>
+</div>
+
+    
 @endsection
 @section('scripts')
 <script>
@@ -442,6 +512,13 @@ document.addEventListener("DOMContentLoaded", function () {
   const initialMax = parseInt(priceInputs[1].value) || parseInt(rangeInputs[1].max);
   updateProgress(initialMin, initialMax);
 });
+
+
+    // ✅ Lightbox open function
+    function openLightbox(src) {
+        document.getElementById("lightboxImg").src = src;
+        $("#lightboxModal").modal("show");
+    }
 </script>
 
 @endsection

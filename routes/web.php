@@ -25,6 +25,7 @@ use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BlogAdminController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\UserController;
 
@@ -68,6 +69,7 @@ Route::post('/newsletter', [NewsletterController::class, 'store'])->name('newsle
 
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/client/{slug}', [ClientController::class, 'show'])->name('client.show');
 
 
 // Admin protected routes
@@ -101,6 +103,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     
     Route::resource('visas', VisaAdminController::class)->names('admin.visas');
     Route::resource('clients', ClientAdminController::class)->names('admin.clients');
+    Route::delete('gallery/delete/{id}', [ClientAdminController::class, 'deleteGallery'])
+     ->name('admin.gallery.delete');
     Route::resource('banners', BannerController::class)->names('admin.banners');
 
     Route::get('/contacts', [AdminContactController::class, 'index'])->name('admin.contacts.index');

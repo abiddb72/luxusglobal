@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('slug')->nullable()->unique();
+            $table->integer('rating')->default(1);
             $table->string('profession')->nullable();
             $table->string('image')->nullable();
             $table->longText('description')->nullable();

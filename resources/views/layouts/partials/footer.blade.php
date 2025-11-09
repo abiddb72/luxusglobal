@@ -1,6 +1,9 @@
 <div class="container-fluid py-5 ">
     <div class="container text-center">
-        <h2 class="mb-5">Our Bank Account Details</h2>
+        <div class="text-center mb-3 pb-3">
+            <h5 class="text-secondary text-uppercase" style="letter-spacing: 5px;">Official Bank Account Details</h5>
+            <h1>Secure Payment Details For Hassle-Free Transactions</h1>
+        </div>
 
         <div class="d-flex justify-content-around">
             @foreach($global_banks as $bank)

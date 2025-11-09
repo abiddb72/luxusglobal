@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             BankSeeder::class,
             VisaSeeder::class,
             ClientSeeder::class,
+            GallerySeeder::class,
         ]);
         // User::factory()->create([
         //     'name' => 'Test User',

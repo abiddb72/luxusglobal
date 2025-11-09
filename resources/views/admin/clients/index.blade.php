@@ -23,11 +23,11 @@
             <table id="clientsTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>SR</th>
-                        <th>Image</th>
+                        <th width="30">SR</th>
+                        <th width="50">Image</th>
                         <th>Name</th>
                         <th>Profession</th>
-                        
+                        <th>Rating</th>
                         <th>Status</th>
                         <th width="150">Actions</th>
                     </tr>
@@ -36,14 +36,28 @@
                     @foreach($clients as $key => $client)
                     <tr>
                         <td>{{ $key+1 }}</td>
+
                         <td>
                             @if($client->image)
                                 <img src="{{ asset('images/'.$client->image) }}" width="40" class="img-circle">
                             @endif
                         </td>
+
                         <td>{{ $client->name }}</td>
+
                         <td>{{ $client->profession }}</td>
-                        
+
+                        <!-- ⭐ DYNAMIC STAR RATING -->
+                        <td>
+                            @for($i = 1; $i <= 5; $i++)
+                                @if($i <= $client->rating)
+                                    <i class="fa fa-star text-warning"></i>
+                                @else
+                                    <i class="fa fa-star text-secondary"></i>
+                                @endif
+                            @endfor
+                        </td>
+
                         <td>
                             @if($client->status == 1)
                                 <span class="badge badge-success">Active</span>
@@ -51,15 +65,23 @@
                                 <span class="badge badge-danger">Inactive</span>
                             @endif
                         </td>
+
                         <td>
-                            <a href="{{ route('admin.clients.edit', $client->id) }}" class="btn btn-sm btn-info"><i class="fa fa-edit"></i></a>
-                            <form action="{{ route('admin.clients.destroy', $client->id) }}" method="POST" style="display:inline-block;">
+                            <a href="{{ route('admin.clients.edit', $client->id) }}" class="btn btn-sm btn-info">
+                                <i class="fa fa-edit"></i>
+                            </a>
+
+                            <form action="{{ route('admin.clients.destroy', $client->id) }}"
+                                  method="POST" style="display:inline-block;">
                                 @csrf @method('DELETE')
-                                <button class="btn btn-sm btn-danger" onclick="return confirm('Are You Sure?')">
+
+                                <button class="btn btn-sm btn-danger"
+                                        onclick="return confirm('Are You Sure?')">
                                     <i class="fa fa-trash"></i>
                                 </button>
                             </form>
                         </td>
+
                     </tr>
                     @endforeach
                 </tbody>
@@ -69,8 +91,8 @@
 
 </div>
 @endsection
+
 @section('scripts')
-<!-- jQuery UI -->
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
 
 <script>
